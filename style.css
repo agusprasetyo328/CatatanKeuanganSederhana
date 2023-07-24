@@ -1,0 +1,129 @@
+/* Container */
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+/* Form */
+form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 10px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 20px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="7"><path d="M0 0L7 7L14 0H0Z" fill="%232D3748"/></svg>') no-repeat;
+  background-position-x: calc(100% - 10px);
+  background-position-y: 50%;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tfoot td {
+  font-weight: bold;
+}
+
+#export {
+  background-color: #008CBA;
+  color: white;
+  font-weight: bold;
+}
+
+#export:hover {
+  background-color: #0077A3;
+}
+
+/* Alert */
+.alert {
+  background-color: #f2f2f2;
+  color: #333;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.alert-success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.alert-danger {
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+}

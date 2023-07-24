@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CatatanKeuanganHarian</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <form id="form-tambah">
+      <label for="jenis">Jenis:</label>
+      <select id="jenis" required>
+        <option value="">Pilih Jenis</option>
+        <option value="pemasukan">Pemasukan</option>
+        <option value="pengeluaran">Pengeluaran</option>
+      </select>
+      <label for="tanggal">Tanggal:</label>
+      <input type="date" id="tanggal" required>
+      <label for="keterangan">Keterangan:</label>
+      <input type="text" id="keterangan" required>
+      <label for="jumlah">Jumlah:</label>
+      <input type="number" id="jumlah" required>
+      <button type="submit" id="tambah">Tambah</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Tanggal</th>
+          <th>Jenis</th>
+          <th>Keterangan</th>
+          <th>Jumlah</th>
+        </tr>
+      </thead>
+      <tbody id="catatan">
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" align="right">Total Pemasukan:</td>
+          <td id="total-pemasukan">0</td>
+        </tr>
+        <tr>
+          <td colspan="3" align="right">Total Pengeluaran:</td>
+          <td id="total-pengeluaran">0</td>
+        </tr>
+        <tr>
+          <td colspan="3" align="right">Total Saldo:</td>
+          <td id="total-saldo">0</td>
+        </tr>
+        <tr>
+          <td colspan="4" align="right"><button id="export">Export to Excel</button></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    const exportBtn = document.querySelector('#export');
+    exportBtn.addEventListener('click', saveToExcel);
+  </script>
+</body>
+</html>
