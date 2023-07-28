@@ -13,7 +13,7 @@ Instalasi
    - Buka file db.php pada direktori root proyek.
    - Ganti nilai $servername, $username, $password, dan $dbname sesuai dengan konfigurasi database Anda.
 4. Jalankan aplikasi di web browser dengan membuka file index.html.
-Catatan Penggunaan
+5. Catatan Penggunaan
 - Masukkan jenis (pemasukan/pengeluaran), tanggal, keterangan, dan jumlah pada form untuk menambahkan catatan keuangan baru.
 - Klik tombol "Tambah" untuk menyimpan catatan keuangan baru.
 - Tabel akan menampilkan daftar catatan keuangan yang telah ditambahkan, termasuk total pemasukan, pengeluaran, dan saldo.
