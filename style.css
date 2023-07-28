@@ -3,12 +3,14 @@
   margin: 0 auto;
   max-width: 800px;
   padding: 20px;
+  background-image: url('url_gambar_latar_belakang.jpg');
+  background-size: cover;
 }
 
 /* Form */
 form {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
   margin-bottom: 20px;
 }
@@ -119,4 +121,11 @@ tfoot td {
 
 .closebtn:hover {
   color: black;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+  form {
+    grid-template-columns: 1fr;
+  }
 }

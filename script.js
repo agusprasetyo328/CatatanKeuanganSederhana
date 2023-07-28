@@ -16,6 +16,12 @@ formTambah.addEventListener('submit', (event) => {
   const jumlah = parseInt(document.querySelector('#jumlah').value);
   const jenis = document.querySelector('#jenis').value;
 
+  if (!tanggal || !keterangan || isNaN(jumlah) || jenis === '') {
+    // Menampilkan pesan kesalahan jika input tidak lengkap
+    alert('Harap isi semua field dengan benar!');
+    return;
+  }
+
   let jenisText;
   let jumlahText;
   
@@ -49,6 +55,12 @@ formTambah.addEventListener('submit', (event) => {
 
 exportBtn.addEventListener('click', () => {
   const table = document.querySelector('table');
+
+  if (catatan.children.length === 0) {
+    // Menampilkan pesan kesalahan jika tabel kosong
+    alert('Tidak ada catatan keuangan untuk diekspor!');
+    return;
+  }
 
   // Create a new Workbook object
   const workbook = XLSX.utils.book_new();

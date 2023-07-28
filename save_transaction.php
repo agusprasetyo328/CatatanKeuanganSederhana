@@ -1,4 +1,5 @@
 <?php
+// Pastikan untuk mengganti nilai-nilai berikut sesuai dengan konfigurasi database Anda
 $servername = "your_servername";
 $username = "your_username";
 $password = "your_password";
@@ -12,19 +13,28 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Get data from the HTML form
-$jenis = $_POST['jenis'];
-$tanggal = $_POST['tanggal'];
-$keterangan = $_POST['keterangan'];
-$jumlah = $_POST['jumlah'];
-
-// Prepare and execute the SQL statement
-$sql = "INSERT INTO transactions (jenis, tanggal, keterangan, jumlah) VALUES ('$jenis', '$tanggal', '$keterangan', $jumlah)";
-if ($conn->query($sql) === TRUE) {
-    echo "New transaction saved successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+// Fungsi untuk membersihkan input dari potensi serangan SQL injection
+function clean_input($data) {
+    global $conn;
+    return mysqli_real_escape_string($conn, trim($data));
 }
 
+// Get data from the HTML form after cleaning the input
+$jenis = clean_input($_POST['jenis']);
+$tanggal = clean_input($_POST['tanggal']);
+$keterangan = clean_input($_POST['keterangan']);
+$jumlah = (int) $_POST['jumlah']; // Pastikan jumlah adalah bilangan bulat
+
+// Prepare and execute the SQL statement dengan menggunakan prepared statement untuk mencegah SQL injection
+$stmt = $conn->prepare("INSERT INTO transactions (jenis, tanggal, keterangan, jumlah) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("sssi", $jenis, $tanggal, $keterangan, $jumlah);
+
+if ($stmt->execute()) {
+    echo "New transaction saved successfully";
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+$stmt->close();
 $conn->close();
 ?>
